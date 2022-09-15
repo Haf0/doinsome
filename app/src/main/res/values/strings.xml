@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Cinemaphile</string>
+    <string name="description">Description</string>
+    <string name="release_date">Release Date</string>
+    <string name="colon">:</string>
+    <string name="popularity">Popularity</string>
+    <string name="favorite">favorite</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="discover">Discover</string>
+    <string name="similar_movies">Similar Movies</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="sign_in_to_continue">Sign In to Continue</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="dont_have_an_account">Don\'t have account? sign up here</string>
+    <string name="name">Name</string>
+    <string name="email_is_invalid">Your Email is invalid</string>
+    <string name="email_isEmpy">Email can\'t Empty</string>
+    <string name="hello_blank_fragment">blank fragment</string>
+    <string name="home">home</string>
+    <string name="search">Search</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="have_an_account_login_here">have an account? Login here</string>
+    <string name="username">Username</string>
+    <string name="born_date">Born date</string>
+
+    //handle empty
+    <string name="cant_empty">can\'t Empty</string>
+    <string name="password_length">Password must Over 8 Character!</string>
+    <string name="email_exist">this email already have an account!</string>
+    <string name="username_exist">Username already exist, please use another username!</string>
+</resources>
