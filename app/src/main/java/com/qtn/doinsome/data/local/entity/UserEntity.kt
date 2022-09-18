@@ -1,4 +1,4 @@
-package com.qtn.doinsome.data.local.model
+package com.qtn.doinsome.data.local.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

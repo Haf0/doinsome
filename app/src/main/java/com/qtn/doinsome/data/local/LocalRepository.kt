@@ -3,7 +3,7 @@ package com.qtn.doinsome.data.local
 import android.app.Application
 import com.qtn.doinsome.data.local.database.MovieDao
 import com.qtn.doinsome.data.local.database.MovieDatabase
-import com.qtn.doinsome.data.local.model.UserEntity
+import com.qtn.doinsome.data.local.entity.UserEntity
 import java.util.concurrent.Executors
 
 class LocalRepository(application: Application) {

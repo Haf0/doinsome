@@ -30,4 +30,6 @@
     <string name="password_length">Password must Over 8 Character!</string>
     <string name="email_exist">this email already have an account!</string>
     <string name="username_exist">Username already exist, please use another username!</string>
+    <string name="logout">Logout</string>
+    <string name="content_description_media">item_image</string>
 </resources>

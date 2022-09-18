@@ -1,22 +1,24 @@
 package com.qtn.doinsome.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.qtn.doinsome.R
 import com.qtn.doinsome.data.local.database.MovieDao
 import com.qtn.doinsome.data.local.database.MovieDatabase
 import com.qtn.doinsome.databinding.ActivityLoginBinding
+import com.qtn.doinsome.preference.SessionModel
 import com.qtn.doinsome.ui.MainActivity
 import com.qtn.doinsome.ui.register.RegisterActivity
-import com.qtn.doinsome.viewmodel.UserViewModel
-import com.qtn.doinsome.viewmodel.UserViewModelFactory
+import com.qtn.doinsome.viewmodel.DatastoreViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModel: UserViewModel
+    private val preference: DatastoreViewModel by viewModels()
     private lateinit var db: MovieDatabase
     private lateinit var dao: MovieDao
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +27,16 @@ class LoginActivity : AppCompatActivity() {
         db = MovieDatabase.getDatabase(applicationContext)
         dao = db.movieDao()
 
+        preference.getLoginState().observe(this){
+            if (it.state){
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        obtainViewModel()
 
         binding.btnLogin.setOnClickListener {
             loginValidate()
@@ -49,16 +58,19 @@ class LoginActivity : AppCompatActivity() {
                 val isUser = dao.readDataUser(email, password)
                 if (isUser != null){
                     startActivity(Intent(this, MainActivity::class.java))
+                    preference.login()
+                    preference.saveUser(
+                        SessionModel(
+                            email,
+                            true
+                        )
+                    )
                     finish()
                 }else{
                     Toast.makeText(this, "Incorrectly entered the username or password you entered", Toast.LENGTH_SHORT).show()
                 }
-                    
+
             }
         }
-    }
-    private fun obtainViewModel(){
-        val factory = UserViewModelFactory.getInstance(this.application)
-        viewModel = ViewModelProvider(this,factory).get(UserViewModel::class.java)
     }
 }

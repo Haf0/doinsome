@@ -1,27 +1,25 @@
 package com.qtn.doinsome.ui.register
 
 import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.qtn.doinsome.R
 import com.qtn.doinsome.data.local.database.MovieDao
 import com.qtn.doinsome.data.local.database.MovieDatabase
-import com.qtn.doinsome.data.local.model.UserEntity
+import com.qtn.doinsome.data.local.entity.UserEntity
 import com.qtn.doinsome.databinding.ActivityRegisterBinding
 import com.qtn.doinsome.viewmodel.UserViewModel
-import com.qtn.doinsome.viewmodel.UserViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by viewModels()
     private lateinit var db : MovieDatabase
     private lateinit var dao: MovieDao
 
@@ -31,7 +29,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        obtainViewModel()
         db = MovieDatabase.getDatabase(applicationContext)
         dao = db.movieDao()
 
@@ -109,8 +106,4 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    private fun obtainViewModel(){
-        val factory = UserViewModelFactory.getInstance(this.application)
-        viewModel = ViewModelProvider(this,factory).get(UserViewModel::class.java)
-    }
 }
