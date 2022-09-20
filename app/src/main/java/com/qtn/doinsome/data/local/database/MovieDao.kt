@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.qtn.doinsome.data.local.entity.MovieEntity
 import com.qtn.doinsome.data.local.entity.UserEntity
 
 @Dao
@@ -20,5 +21,8 @@ interface MovieDao {
 
     @Query("SELECT username FROM user WHERE username=:username")
     fun validateUsername(username: String) : String
+
+    @Query("SELECT * FROM movie")
+    fun readDataMovie(): List<MovieEntity>
 
 }

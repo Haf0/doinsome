@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    style="?attr/materialCardViewElevatedStyle">
+    android:clickable="true"
+    style="?attr/materialCardViewElevatedStyle"
+    android:focusable="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +52,7 @@
                     android:id="@+id/tv_original_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     tools:text="ini judul asli"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     />
@@ -59,6 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
                     tools:text="ini sinopsis"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     android:textColor="?android:attr/textColorSecondary"
@@ -71,12 +75,11 @@
                 android:id="@+id/group_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 app:singleSelection="true"
-                android:gravity="right">
+                android:gravity="end">
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.Material3.Button.IconButton.Filled"
-                    android:id="@+id/button1"
+                    android:id="@+id/btn_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_watchlist" />
